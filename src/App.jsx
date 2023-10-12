@@ -1,12 +1,25 @@
+import {  useReducer } from 'react'
 import './App.css'
+import AddTodo from './components/AddTodo/AddTodo'
+import TodoList from './components/TodoList/TodoList'
+import Todo from './components/Todo/Todo'
+import TodoContext from './context/TodoContext'
+import TodoReducer from './reducers/TodoReducer'
 
 function App() {
  
 
+const [todos, dispatch] = useReducer(TodoReducer,[])
+
+
   return (
     <>
-     Hello world
+    <TodoContext.Provider value= {{todos,dispatch}}>
+      <AddTodo />
+      <TodoList />
+      </TodoContext.Provider>
     </>
+
   )
 }
 
